@@ -46,3 +46,20 @@ Follow these steps to clone the repository and start the development server:
 - `npm run dev`
 
 You should now be able to access the application at http://localhost:5173.
+
+# LibraSws intervention
+
+- This project is a fork of [react-shadcn-dashboard-starter](https://github.com/Kiranism/react-shadcn-dashboard-starter.git)
+
+### Add original repo as upstream
+
+  ```bash
+  git remote add upstream git@github.com:Kiranism/react-shadcn-dashboard-starter.git
+  ```
+
+### Keeping fork in sync
+
+  ```bash
+  git fetch upstream
+  git merge upstream/main
+  ```
