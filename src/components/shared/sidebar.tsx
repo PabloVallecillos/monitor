@@ -5,6 +5,7 @@ import { useSidebar } from '@/hooks/use-sidebar';
 import { cn } from '@/lib/utils';
 import { ChevronsLeft } from 'lucide-react';
 import { useState } from 'react';
+import { Logo } from '@/components/shared/logo';
 
 type SidebarProps = {
   className?: string;
@@ -34,10 +35,10 @@ export default function Sidebar({ className }: SidebarProps) {
           isMinimized ? 'justify-center ' : 'justify-between'
         )}
       >
-        {!isMinimized && <h1 className="text-2xl font-bold">Logo</h1>}
+        {!isMinimized && <Logo className="h-12 w-24" />}
         <ChevronsLeft
           className={cn(
-            'size-8 cursor-pointer rounded-full border bg-background text-foreground',
+            'size-8 cursor-pointer text-foreground',
             isMinimized && 'rotate-180'
           )}
           onClick={handleToggle}

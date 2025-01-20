@@ -53,13 +53,13 @@ You should now be able to access the application at http://localhost:5173.
 
 ### Add original repo as upstream
 
-  ```bash
-  git remote add upstream git@github.com:Kiranism/react-shadcn-dashboard-starter.git
-  ```
+```bash
+git remote add upstream git@github.com:Kiranism/react-shadcn-dashboard-starter.git
+```
 
 ### Keeping fork in sync
 
-  ```bash
-  git fetch upstream
-  git merge upstream/main
-  ```
+```bash
+git fetch upstream
+git merge upstream/main
+```

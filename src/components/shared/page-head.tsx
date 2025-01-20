@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-export default function PageHead({ title = 'Kutubi' }) {
+export default function PageHead({ title = 'Isbue' }) {
   return (
     <Helmet>
       <title> {title} </title>
