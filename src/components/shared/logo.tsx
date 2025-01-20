@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '@/providers/theme-provider';
 
 type LogoProps = {
   className?: string;
@@ -6,8 +7,13 @@ type LogoProps = {
 };
 
 export const Logo: React.FC<LogoProps> = ({ className, color = 'default' }) => {
-  const primaryColor = color === 'white' ? '#FFFFFF' : '#012851';
-  const secondaryColor = color === 'white' ? '#FFFFFF' : '#4925B9';
+  const theme = useTheme();
+  let primaryColor = color === 'white' ? '#FFFFFF' : '#012851';
+  let secondaryColor = color === 'white' ? '#FFFFFF' : '#4925B9';
+  if (theme.theme !== 'light') {
+    primaryColor = '#FFFFFF';
+    secondaryColor = '#FFFFFF';
+  }
 
   return (
     <svg

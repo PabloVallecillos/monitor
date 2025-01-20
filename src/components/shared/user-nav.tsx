@@ -10,6 +10,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+import { User } from 'lucide-react';
 
 export default function UserNav() {
   return (
@@ -17,13 +18,9 @@ export default function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-14 w-14 rounded-full">
           <Avatar className="h-14 w-14">
-            <AvatarImage
-              src={
-                'https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png'
-              }
-              alt={''}
-            />
-            <AvatarFallback>hello</AvatarFallback>
+            <div className="flex h-full w-full items-center justify-center rounded-full bg-primary-foreground">
+              <User className="h-8 w-8 text-primary" />
+            </div>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/tooltip';
 import { usePathname } from '@/routes/hooks';
 import { Link } from 'react-router-dom';
+import { ModeToggle } from '@/components/shared/theme-toggle';
 
 interface DashboardNavProps {
   items: NavItem[];
@@ -75,6 +76,9 @@ export default function DashboardNav({
           );
         })}
       </TooltipProvider>
+      <div className="absolute bottom-4">
+        <ModeToggle />
+      </div>
     </nav>
   );
 }
