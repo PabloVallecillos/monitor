@@ -1,4 +1,11 @@
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip
+} from 'recharts';
 
 const data = [
   {
@@ -69,7 +76,20 @@ export default function Overview() {
           axisLine={false}
           tickFormatter={(value) => `$${value}`}
         />
-        <Bar dataKey="total" fill="#adfa1d" radius={[4, 4, 0, 0]} />
+        <Tooltip
+          formatter={(value) => [`$${value}`, 'Total']}
+          contentStyle={{
+            backgroundColor: '#ffffff',
+            borderRadius: '8px',
+            border: '1px solid #cccccc',
+            padding: '8px',
+            fontSize: '12px'
+          }}
+          labelStyle={{ color: '#013C51' }}
+          cursor={{ fill: 'rgba(0,0,0,0.1)' }}
+          labelFormatter={(label) => <strong>{label}</strong>}
+        />
+        <Bar dataKey="total" fill="#013C51" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
