@@ -61,11 +61,12 @@ export default function BubbleMapChart() {
                   backgroundColor: '#ffffff',
                   borderRadius: '8px',
                   color: '#013C51',
-                  display: 'inline-block'
+                  display: 'inline-block',
+                  margin: '2.5px 0'
                 }}
               >
                 <strong className="mb-4">{`${city['name']}`}</strong>
-                <br />
+                <br className="mb-4" />
                 {`Users: ${city['activeUsers']}%`}
               </span>
             </Tooltip>

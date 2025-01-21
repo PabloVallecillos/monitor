@@ -6,6 +6,7 @@ import {
   YAxis,
   Tooltip
 } from 'recharts';
+import { useTheme } from '@/providers/theme-provider.tsx';
 
 const data = [
   {
@@ -59,9 +60,11 @@ const data = [
 ];
 
 export default function Overview() {
+  const { theme } = useTheme();
+
   return (
     <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={data}>
+      <BarChart data={data} tabIndex={0}>
         <XAxis
           dataKey="name"
           stroke="#888888"
@@ -78,6 +81,9 @@ export default function Overview() {
         />
         <Tooltip
           formatter={(value) => [`$${value}`, 'Total']}
+          itemStyle={{
+            color: '#013C51'
+          }}
           contentStyle={{
             backgroundColor: '#ffffff',
             borderRadius: '8px',
@@ -86,10 +92,17 @@ export default function Overview() {
             fontSize: '12px'
           }}
           labelStyle={{ color: '#013C51' }}
-          cursor={{ fill: 'rgba(0,0,0,0.1)' }}
+          cursor={{
+            fill:
+              theme !== 'light' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
+          }}
           labelFormatter={(label) => <strong>{label}</strong>}
         />
-        <Bar dataKey="total" fill="#013C51" radius={[4, 4, 0, 0]} />
+        <Bar
+          dataKey="total"
+          fill={theme !== 'light' ? '#ffffff' : '#013C51'}
+          radius={[4, 4, 0, 0]}
+        />
       </BarChart>
     </ResponsiveContainer>
   );

@@ -7,12 +7,12 @@ export const navItems: NavItem[] = [
     icon: 'dashboard',
     label: 'Dashboard'
   },
-  {
-    title: 'Students',
-    href: '/student',
-    icon: 'user',
-    label: 'Student'
-  },
+  // {
+  //   title: 'Students',
+  //   href: '/student',
+  //   icon: 'user',
+  //   label: 'Student'
+  // },
   {
     title: 'Login',
     href: '/login',

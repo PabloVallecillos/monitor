@@ -1,4 +1,5 @@
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { useTheme } from '@/providers/theme-provider';
 
 const data = [
   { name: 'Product A', value: Math.floor(Math.random() * 5000) + 1000 },
@@ -7,9 +8,13 @@ const data = [
   { name: 'Product D', value: Math.floor(Math.random() * 5000) + 1000 }
 ];
 
-const COLORS = ['#013C51', '#0B4A5B', '#1C5C6D', '#2E6E80'];
-
 export default function PieChartImpl() {
+  const { theme } = useTheme();
+  let colors = ['#013C51', '#0B4A5B', '#1C5C6D', '#2E6E80'];
+  if (theme !== 'light') {
+    colors = ['#FFFFFF', '#F5F5F5', '#EAEAEA', '#DFDFDF'];
+  }
+
   return (
     <ResponsiveContainer width="100%" height={350}>
       <PieChart>
@@ -26,11 +31,14 @@ export default function PieChartImpl() {
           }
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
           ))}
         </Pie>
         <Tooltip
-          formatter={(value, name) => [`$${value}`, name]}
+          formatter={(value) => [`$${value}`]}
+          itemStyle={{
+            color: '#013C51'
+          }}
           contentStyle={{
             backgroundColor: '#ffffff',
             borderRadius: '8px',
@@ -39,7 +47,10 @@ export default function PieChartImpl() {
             fontSize: '12px'
           }}
           labelStyle={{ color: '#013C51' }}
-          cursor={{ fill: 'rgba(0,0,0,0.1)' }}
+          cursor={{
+            fill:
+              theme !== 'light' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
+          }}
           labelFormatter={(label) => <strong>{label}</strong>}
         />
       </PieChart>
