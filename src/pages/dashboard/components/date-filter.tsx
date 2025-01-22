@@ -1,22 +1,24 @@
-import * as Popover from '@radix-ui/react-popover';
-import React, { useState, useEffect } from 'react';
-import { useTheme } from '@/providers/theme-provider';
+import React from 'react';
+import { useFilters } from '@/providers/date-filter-provider';
+import { useTheme } from 'next-themes';
 
 const DateFilter: React.FC = () => {
-  const today = new Date();
-  const startDateDefault = new Date(today);
-  startDateDefault.setDate(today.getDate() - 28);
-  const formatDate = (date: Date) => date.toISOString().split('T')[0];
-  const [startDate, setStartDate] = useState<string>(
-    formatDate(startDateDefault)
-  );
-  const [endDate, setEndDate] = useState<string>(formatDate(today));
+  const { filters, setFilters } = useFilters();
   const { theme } = useTheme();
 
-  useEffect(() => {
-    setStartDate(formatDate(startDateDefault));
-    setEndDate(formatDate(today));
-  }, []);
+  const handleDateChange = (field: 'startDate' | 'endDate', value: string) => {
+    const newDate = value ? new Date(value) : null;
+    if (newDate && !isNaN(newDate.getTime())) {
+      setFilters((prev) => ({ ...prev, [field]: newDate }));
+    }
+  };
+
+  const formatDateForInput = (date: Date | null) => {
+    if (date && !isNaN(date.getTime())) {
+      return date.toISOString().split('T')[0];
+    }
+    return '';
+  };
 
   return (
     <div className="flex flex-col items-center gap-4 md:flex-row">
@@ -24,34 +26,23 @@ const DateFilter: React.FC = () => {
         <label className="mb-1 block text-sm font-medium text-muted-foreground">
           Start Date
         </label>
-        <Popover.Root>
-          <Popover.Trigger>
-            <input
-              type="date"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              className={`w-full rounded-md border border-gray-300 p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary ${theme !== 'light' ? 'text-black' : 'text-primary'}`}
-              placeholder={startDate ? '' : 'Select start date'}
-            />
-          </Popover.Trigger>
-        </Popover.Root>
+        <input
+          type="date"
+          value={formatDateForInput(filters.startDate)}
+          onChange={(e) => handleDateChange('startDate', e.target.value)}
+          className={`w-full rounded-md border border-gray-300 p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary ${theme !== 'light' ? 'text-black' : 'text-primary'}`}
+        />
       </div>
-
       <div>
         <label className="mb-1 block text-sm font-medium text-muted-foreground">
           End Date
         </label>
-        <Popover.Root>
-          <Popover.Trigger>
-            <input
-              type="date"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              className={`w-full rounded-md border border-gray-300 p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary ${theme !== 'light' ? 'text-black' : 'text-primary'}`}
-              placeholder={endDate ? '' : 'Select end date'}
-            />
-          </Popover.Trigger>
-        </Popover.Root>
+        <input
+          type="date"
+          value={formatDateForInput(filters.endDate)}
+          onChange={(e) => handleDateChange('endDate', e.target.value)}
+          className={`w-full rounded-md border border-gray-300 p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary ${theme !== 'light' ? 'text-black' : 'text-primary'}`}
+        />
       </div>
     </div>
   );
