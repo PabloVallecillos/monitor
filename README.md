@@ -63,3 +63,7 @@ git remote add upstream git@github.com:Kiranism/react-shadcn-dashboard-starter.g
 git fetch upstream
 git merge upstream/main
 ```
+
+### Clickup doc
+
+[here](https://app.clickup.com/2536629/v/dc/2dd5n-1568/2dd5n-7832)
