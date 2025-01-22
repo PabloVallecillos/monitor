@@ -18,7 +18,7 @@ interface FilterProviderProps {
 
 export const DateFilterProvider = ({ children }: FilterProviderProps) => {
   const [filters, setFilters] = useState<Filters>({
-    startDate: new Date(new Date().setDate(new Date().getDate() - 28)),
+    startDate: new Date(new Date().setDate(new Date().getDate() - 444)),
     endDate: new Date()
   });
 

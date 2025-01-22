@@ -6,12 +6,12 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 196 97.9% 16.1%;
+    --foreground: 240 66.7% 43.5%;
     --card: 0 0% 100%;
-    --card-foreground: 196 97.9% 16.1%;
+    --card-foreground: 240 66.7% 43.5%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 240 66.7% 43.5%;
+    --primary: 196 97.9% 16.1%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -73,4 +73,18 @@
   html {
     font-family: 'Montserrat', sans-serif;
   }
+}
+
+.rdrDefinedRangesWrapper {
+  color: black !important;
+}
+
+@media (max-width: 1024px) {
+  .rdrDateRangePickerWrapper {
+    @apply flex flex-col;
+  }
+}
+
+.rdrDateDisplayWrapper {
+  display: none !important;
 }

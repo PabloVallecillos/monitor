@@ -31,7 +31,7 @@ export default function PieChartImpl() {
   const { filters } = useFilters();
   const { startDate, endDate } = filters;
 
-  let colors = ['#013C51', '#0B4A5B', '#1C5C6D', '#2E6E80'];
+  let colors = ['#2B2DFF', '#484AFF', '#6265FF', '#7E80FF'];
   if (theme !== 'light') {
     colors = ['#FFFFFF', '#F5F5F5', '#EAEAEA', '#DFDFDF'];
   }
@@ -63,7 +63,7 @@ export default function PieChartImpl() {
           cx="50%"
           cy="50%"
           outerRadius={100}
-          fill="#013C51"
+          fill="hsl(var(--card-foreground))"
           label={({ name, percent }) =>
             `${name}: ${(percent * 100).toFixed(0)}%`
           }
@@ -75,7 +75,7 @@ export default function PieChartImpl() {
         <Tooltip
           formatter={(value) => [`$${value}`]}
           itemStyle={{
-            color: '#013C51'
+            color: '#2525B9'
           }}
           contentStyle={{
             backgroundColor: '#ffffff',
@@ -84,7 +84,7 @@ export default function PieChartImpl() {
             padding: '8px',
             fontSize: '12px'
           }}
-          labelStyle={{ color: '#013C51' }}
+          labelStyle={{ color: '#2525B9' }}
           cursor={{
             fill:
               theme !== 'light' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'

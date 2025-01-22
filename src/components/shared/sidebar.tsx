@@ -20,6 +20,7 @@ export default function Sidebar({ className }: SidebarProps) {
     toggle();
     setTimeout(() => setStatus(false), 500);
   };
+
   return (
     <nav
       className={cn(

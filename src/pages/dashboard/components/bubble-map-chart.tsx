@@ -109,8 +109,8 @@ export default function BubbleMapChart() {
             key={k}
             center={[city.coordinates[1], city.coordinates[0]]}
             radius={5 + 5 * Math.log(city.activeUsers)}
-            color="#013C51"
-            fillColor="#013C51"
+            color="#2525B9"
+            fillColor="#2525B9"
             fillOpacity={0.5}
             stroke={false}
           >
@@ -120,7 +120,7 @@ export default function BubbleMapChart() {
                   fontSize: '12px',
                   backgroundColor: '#ffffff',
                   borderRadius: '8px',
-                  color: '#013C51',
+                  color: '#2525B9',
                   display: 'inline-block',
                   margin: '2.5px 0'
                 }}

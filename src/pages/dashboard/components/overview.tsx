@@ -112,7 +112,7 @@ export default function Overview() {
             <Tooltip
               formatter={(value) => [`$${value}`, 'Total']}
               itemStyle={{
-                color: '#013C51'
+                color: '#2525B9'
               }}
               contentStyle={{
                 backgroundColor: '#ffffff',
@@ -121,7 +121,7 @@ export default function Overview() {
                 padding: '8px',
                 fontSize: '12px'
               }}
-              labelStyle={{ color: '#013C51' }}
+              labelStyle={{ color: '#2525B9' }}
               cursor={{
                 fill:
                   theme !== 'light'
@@ -132,7 +132,9 @@ export default function Overview() {
             />
             <Bar
               dataKey="total"
-              fill={theme !== 'light' ? '#ffffff' : '#013C51'}
+              fill={
+                theme !== 'light' ? '#ffffff' : 'hsl(var(--card-foreground))'
+              }
               radius={[4, 4, 0, 0]}
             />
           </BarChart>
