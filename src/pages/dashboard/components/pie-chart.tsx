@@ -47,7 +47,7 @@ export default function PieChartImpl() {
     return (
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center justify-center py-8">
         <span className="text-center text-lg font-semibold text-gray-500">
-          No data available for the selected date range.
+          No data available for the selected date range
         </span>
       </div>
     );
