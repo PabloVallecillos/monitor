@@ -1,4 +1,4 @@
-import FormPage from '@/pages/form';
+// import FormPage from '@/pages/form';
 import NotFound from '@/pages/not-found';
 import { Suspense, lazy } from 'react';
 import { Navigate, Outlet, useRoutes } from 'react-router-dom';
@@ -8,10 +8,12 @@ const DashboardLayout = lazy(
 );
 const SignInPage = lazy(() => import('@/pages/auth/signin'));
 const DashboardPage = lazy(() => import('@/pages/dashboard'));
-const StudentPage = lazy(() => import('@/pages/students'));
-const StudentDetailPage = lazy(
-  () => import('@/pages/students/StudentDetailPage')
-);
+const SalesPage = lazy(() => import('@/pages/sales'));
+const SupportPage = lazy(() => import('@/pages/support'));
+// const StudentPage = lazy(() => import('@/pages/students'));
+// const StudentDetailPage = lazy(
+//   () => import('@/pages/students/StudentDetailPage')
+// );
 
 // ----------------------------------------------------------------------
 
@@ -32,17 +34,21 @@ export default function AppRouter() {
           index: true
         },
         {
-          path: 'student',
-          element: <StudentPage />
+          path: 'sales',
+          element: <SalesPage />
         },
         {
-          path: 'student/details',
-          element: <StudentDetailPage />
-        },
-        {
-          path: 'form',
-          element: <FormPage />
+          path: 'support',
+          element: <SupportPage />
         }
+        // {
+        //   path: 'student/details',
+        //   element: <StudentDetailPage />
+        // },
+        // {
+        //   path: 'form',
+        //   element: <FormPage />
+        // }
       ]
     }
   ];

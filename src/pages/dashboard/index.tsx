@@ -10,7 +10,7 @@ import ActivitySummaryCharts from '@/pages/dashboard/components/activity-summary
 import { Logo } from '@/components/shared/logo';
 import LineChartImpl from '@/pages/dashboard/components/line-chart';
 import HorizontalStackedBarChart from '@/pages/dashboard/components/horizontal-stacked-bar-chart';
-import VerticalStackedBarChart from '@/pages/dashboard/components/vertical-stacked-bar-chart.tsx';
+import VerticalStackedBarChart from '@/pages/dashboard/components/vertical-stacked-bar-chart';
 
 export default function DashboardPage() {
   return (
