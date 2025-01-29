@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ThemeProvider from './theme-provider';
 import { SidebarProvider } from '@/hooks/use-sidebar';
 import { DateFilterProvider } from '@/providers/date-filter-provider';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export const queryClient = new QueryClient();
 
@@ -40,7 +41,7 @@ export default function AppProvider({
       <BrowserRouter>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <QueryClientProvider client={queryClient}>
-            {/*<ReactQueryDevtools />*/}
+            <ReactQueryDevtools />
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
               <SidebarProvider>
                 <DateFilterProvider>{children}</DateFilterProvider>

@@ -9,64 +9,23 @@ import {
 } from 'recharts';
 import { useTheme } from '@/providers/theme-provider';
 import { useFilters } from '@/providers/date-filter-provider';
-import { useMemo } from 'react';
-
-const rawData = [
-  {
-    name: 'Product A',
-    direct: 4000,
-    organic: 2400,
-    referral: 2400,
-    date: '2024-01-01'
-  },
-  {
-    name: 'Product B',
-    direct: 3000,
-    organic: 1398,
-    referral: 2210,
-    date: '2024-02-01'
-  },
-  {
-    name: 'Product C',
-    direct: 2000,
-    organic: 9800,
-    referral: 2290,
-    date: '2024-03-01'
-  },
-  {
-    name: 'Product D',
-    direct: 2780,
-    organic: 3908,
-    referral: 2000,
-    date: '2024-04-01'
-  },
-  {
-    name: 'Product E',
-    direct: 1890,
-    organic: 4800,
-    referral: 2181,
-    date: '2024-05-01'
-  }
-];
+import { useGetVerticalStackedBarChart } from '@/pages/dashboard/queries/queries';
 
 const VerticalBarStackedChart = () => {
   const { theme } = useTheme();
   const { filters } = useFilters();
+  const { startDate, endDate } = filters;
+  const { data, isLoading, isError } = useGetVerticalStackedBarChart(
+    startDate,
+    endDate
+  );
 
   const colors =
     theme === 'light'
       ? ['#2B2DFF', '#484AFF', '#6265FF']
       : ['#FFFFFF', '#F5F5F5', '#EAEAEA'];
 
-  const filteredData = useMemo(() => {
-    const { startDate, endDate } = filters;
-    return rawData.filter((entry) => {
-      const entryDate = new Date(entry.date);
-      return entryDate >= startDate && entryDate <= endDate;
-    });
-  }, [filters]);
-
-  if (filteredData.length === 0) {
+  if (!data || !data.length || isError || isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
         <span className="text-lg font-semibold text-gray-500">
@@ -80,7 +39,7 @@ const VerticalBarStackedChart = () => {
     <ResponsiveContainer width="100%" height={400}>
       <BarChart
         layout="horizontal"
-        data={filteredData}
+        data={data}
         margin={{
           top: 20,
           right: 30,

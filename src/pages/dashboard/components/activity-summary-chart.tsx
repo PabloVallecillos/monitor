@@ -1,7 +1,7 @@
 import { useAnimatedNumber } from '@/hooks/use-animated-number';
 
 export default function ActivitySummaryChart({ label, value, percentage }) {
-  const animatedValue = useAnimatedNumber(parseFloat(value.replace(',', '')));
+  const animatedValue = useAnimatedNumber(value);
   const animatedPercentage = useAnimatedNumber(percentage);
 
   const renderPercentageIcon = () => {

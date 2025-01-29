@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import {
   LineChart,
   Line,
@@ -10,52 +9,12 @@ import {
   Legend
 } from 'recharts';
 import { useTheme } from '@/providers/theme-provider';
-import { useFilters } from '@/providers/date-filter-provider';
+import { useGetLineChart } from '@/pages/dashboard/queries/queries';
 
-const rawData = [
-  {
-    name: 'Jan',
-    uv: 4000,
-    pv: 2400,
-    productSales: 3000,
-    date: '2024-01-01'
-  },
-  {
-    name: 'Feb',
-    uv: 3000,
-    pv: 1398,
-    productSales: 2000,
-    date: '2024-02-01'
-  },
-  {
-    name: 'Mar',
-    uv: 2000,
-    pv: 9800,
-    productSales: 2780,
-    date: '2024-03-01'
-  },
-  {
-    name: 'Apr',
-    uv: 2780,
-    pv: 3908,
-    productSales: 1890,
-    date: '2024-04-01'
-  }
-];
-
-const LineChartImpl = () => {
+const LineChartImpl = ({ startDate, endDate }) => {
   const { theme } = useTheme();
-  const { filters } = useFilters();
-
-  const filteredData = useMemo(() => {
-    const { startDate, endDate } = filters;
-    return rawData.filter((entry) => {
-      const entryDate = new Date(entry.date);
-      return entryDate >= startDate && entryDate <= endDate;
-    });
-  }, [filters]);
-
-  if (filteredData.length === 0) {
+  const { data, isLoading, isError } = useGetLineChart(startDate, endDate);
+  if (!data || isError || isLoading || data.length === 0) {
     return (
       <div className="flex h-64 items-center justify-center">
         <span className="text-lg font-semibold text-gray-500">
@@ -67,7 +26,7 @@ const LineChartImpl = () => {
 
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <LineChart data={filteredData}>
+      <LineChart data={data}>
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
